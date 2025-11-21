@@ -1,0 +1,77 @@
+<p>prac1 works!</p>
+
+
+<!-- (dataEvent) = child ka event sun rahe hain -->
+
+<p>Message from Child: {{ receivedMessage }}</p>
+<p>Message from Child: {{ receivedMessage }}</p>
+<p>Message from Child: {{ receivedMessage }}</p>
+
+
+
+<h6>this the is teh template driven form</h6>
+
+<form [formGroup]="loginPage" (ngSubmit)="login()">
+  
+    <input type="text" placeholder="name" formControlName="name" >
+    <input type="text" placeholder="email" formControlName="email" >
+    <input type="text" placeholder="password" formControlName="password" >
+    <button type="submit">Submit</button>
+</form>
+
+
+
+
+<form #form="ngForm" (ngSubmit)="tdf(form)">
+
+     <input type="text" placeholder="name" ngModel name="name" #nameCtrl="ngModel" required
+  minlength="3" >
+       <div *ngIf="nameCtrl.invalid && nameCtrl.touched">
+    <small *ngIf="nameCtrl.errors?.['required']">Name is required</small>
+    <small *ngIf="nameCtrl.errors?.['minlength']">Minimum 3 characters</small>
+  </div>
+
+  <input type="text" name="name" ngModel #nameCtrl="ngModel" minlength="3" required/>
+  <div *ngIf="nameCtrl.invalid && nameCtrl.touched">
+    <small *ngIf="nameCtrl.errors?.['required']"></small>
+  </div>
+
+
+
+
+
+
+    <input type="text" placeholder="email" ngModel name="email">
+    <input type="text" placeholder="password" ngModel name="password" >
+    <button type="submit">Submit</button>
+
+</form>
+
+<!-- 
+<form [formGroup]="hello" (ngSubmit)="click()">
+
+   <input type="text" placeholder="name" formControlName="name" />
+   <input type="email" placeholder="email" formControlName="email" />
+   <input type="password" placeholder="password" formControlName="password" />
+   <button type="submit">Submit</button>
+</form> -->
+
+
+
+<h4>this is the parent Data: {{parentData}}</h4>
+<input [(ngModel)]="parentData"  placeholder="Type something here">
+
+<app-prac2 [childInput]="parentData"> </app-prac2>
+
+<input [(ngModel)]="parentData"  />
+
+
+<h4>
+  am getting this from output:{{outputData}}
+</h4>
+
+<app-prac2 (dataEve)="dataEve($event)"> </app-prac2>
+
+
+
+

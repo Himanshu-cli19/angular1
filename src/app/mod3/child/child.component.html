@@ -1,0 +1,11 @@
+<p>child works!</p>
+
+
+<div class="child-card">
+  <h3>Child Component</h3>
+
+  <p *ngIf="userName">Received name: <strong>{{ userName }}</strong></p>
+  <p *ngIf="user && !userName">Received user object: <strong>{{ user.name }}</strong> (id: {{ user.id }})</p>
+
+  <button (click)="onButtonClick()">Send Greeting to Parent</button>
+</div>

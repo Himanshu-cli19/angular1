@@ -1,0 +1,24 @@
+<p>parent works!</p>
+
+
+<div class="parent-card">
+  <h2>Parent Component</h2>
+
+  <p>Parent will pass this name to child: <strong>{{ parentName }}</strong></p>
+  <p>Parent user object: <strong>{{ parentUser.name }}</strong> (id: {{ parentUser.id }})</p>
+
+  <button (click)="changeName()">Change Name (Parent)</button>
+
+  <hr />
+
+  <!-- Using child with primitive Input -->
+  <app-child [userName]="parentName" (greet)="handleGreet($event)"></app-child>
+
+  <hr />
+
+  <!-- Using child with object Input -->
+  <app-child [user]="parentUser" (greet)="handleGreet($event)"></app-child>
+
+  <hr />
+  <p *ngIf="lastMessageFromChild">Last message from child: <em>{{ lastMessageFromChild }}</em></p>
+</div>
